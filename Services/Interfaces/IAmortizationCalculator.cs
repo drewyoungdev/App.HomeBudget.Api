@@ -1,7 +1,7 @@
 using System;
-using house_budget_api.Models.Amortization;
+using HouseBudgetApi.Models.Amortization;
 
-namespace house_budget_api.Services.Interfaces
+namespace HouseBudgetApi.Services.Interfaces
 {
     public interface IAmortizationCalculator
     {

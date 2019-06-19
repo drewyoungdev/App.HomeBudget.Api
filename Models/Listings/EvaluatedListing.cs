@@ -1,4 +1,4 @@
-namespace house_budget_api.Models.Listings
+namespace HouseBudgetApi.Models.Listings
 {
     public class EvaluatedListing
     {

@@ -1,4 +1,4 @@
-namespace house_budget_api.BusinessLogic.Interfaces
+namespace HouseBudgetApi.BusinessLogic.Interfaces
 {
     public interface IBudgetEvaluator
     {

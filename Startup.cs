@@ -1,14 +1,14 @@
-﻿using house_budget_api.BusinessLogic;
-using house_budget_api.BusinessLogic.Interfaces;
-using house_budget_api.Services;
-using house_budget_api.Services.Interfaces;
+﻿using HouseBudgetApi.BusinessLogic;
+using HouseBudgetApi.BusinessLogic.Interfaces;
+using HouseBudgetApi.Services;
+using HouseBudgetApi.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace house_budget_api
+namespace HouseBudgetApi
 {
     public class Startup
     {

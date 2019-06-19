@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using house_budget_api.BusinessLogic.Interfaces;
-using house_budget_api.Models.Listings;
+using HouseBudgetApi.BusinessLogic.Interfaces;
+using HouseBudgetApi.Models.Listings;
 using System.Linq;
 using System;
 
-namespace house_budget_api.BusinessLogic
+namespace HouseBudgetApi.BusinessLogic
 {
     public class HousingBudgetService : IHousingBudgetService
     {

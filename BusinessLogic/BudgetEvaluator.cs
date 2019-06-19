@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using house_budget_api.BusinessLogic.Interfaces;
+using HouseBudgetApi.BusinessLogic.Interfaces;
 
-namespace house_budget_api.BusinessLogic
+namespace HouseBudgetApi.BusinessLogic
 {
     public class BudgetEvaluator : IBudgetEvaluator
     {

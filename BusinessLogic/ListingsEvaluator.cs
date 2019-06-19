@@ -1,9 +1,9 @@
 using System;
-using house_budget_api.BusinessLogic.Interfaces;
-using house_budget_api.Models.Listings;
-using house_budget_api.Services.Interfaces;
+using HouseBudgetApi.BusinessLogic.Interfaces;
+using HouseBudgetApi.Models.Listings;
+using HouseBudgetApi.Services.Interfaces;
 
-namespace house_budget_api.BusinessLogic
+namespace HouseBudgetApi.BusinessLogic
 {
     public class ListingsEvaluator : IListingsEvaluator
     {

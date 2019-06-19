@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using house_budget_api.Models.Listings;
+using HouseBudgetApi.Models.Listings;
 
-namespace house_budget_api.BusinessLogic.Interfaces
+namespace HouseBudgetApi.BusinessLogic.Interfaces
 {
     public interface IHousingBudgetService
     {

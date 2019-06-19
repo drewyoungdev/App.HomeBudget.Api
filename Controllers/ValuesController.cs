@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace house_budget_api.Controllers
+namespace HouseBudgetApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

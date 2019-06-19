@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace house_budget_api.Models.Amortization
+namespace HouseBudgetApi.Models.Amortization
 {
     public class AmortizationSchedule
     {

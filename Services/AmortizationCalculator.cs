@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using house_budget_api.Models.Amortization;
-using house_budget_api.Services.Interfaces;
+using HouseBudgetApi.Models.Amortization;
+using HouseBudgetApi.Services.Interfaces;
 
-namespace house_budget_api.Services
+namespace HouseBudgetApi.Services
 {
     public class AmortizationCalculator : IAmortizationCalculator
     {

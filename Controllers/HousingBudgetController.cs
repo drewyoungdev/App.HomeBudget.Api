@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
-using house_budget_api.BusinessLogic.Interfaces;
-using house_budget_api.Models.Listings;
+using HouseBudgetApi.BusinessLogic.Interfaces;
+using HouseBudgetApi.Models.Listings;
 using Microsoft.AspNetCore.Mvc;
 
-namespace house_budget_api.Controllers
+namespace HouseBudgetApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
