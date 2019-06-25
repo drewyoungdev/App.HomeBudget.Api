@@ -12,6 +12,15 @@ namespace HouseBudgetApi.Models.Database
         public ObjectId Id { get; set; }
 
         public string ClientId { get; set; }
-        public Dictionary<string, decimal> Costs { get; set; }
+        public Income Income { get; set; } = new Income();
+        public Dictionary<string, decimal> Costs { get; set; } = new Dictionary<string, decimal>();
+    }
+
+    public class Income
+    {
+        public decimal GrossAnnualSalary { get; set; }
+        public decimal EstimatedMonthlyTaxes { get; set; }
+        public decimal EstimatedMonthlyDeductions { get; set; }
+        public decimal PercentageTo401K { get; set; }
     }
 }
