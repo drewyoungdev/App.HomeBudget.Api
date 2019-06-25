@@ -10,11 +10,11 @@ namespace HouseBudgetApi.BusinessLogic
     public class HousingBudgetService : IHousingBudgetService
     {
         // Pull from Loan Settings DB
-        private int termInMonths                 = 360;
-        private decimal rate                     = 4.5m;
+        private int termInMonths = 360;
+        private decimal rate = 4.5m;
         private decimal percentageForDownPayment = 20;
 
-        // Pull from Listings DB
+        // Pull from SavedListings DB
         private List<Listing> listings = new List<Listing>()
         {
             new Listing() { Address = "131 S Dorchester Ave, Royal Oak, MI 48067", Price = 259000 },
@@ -41,11 +41,11 @@ namespace HouseBudgetApi.BusinessLogic
 
             var evaluatedListings = await Task.WhenAll(evaluatedListingsTasks);
 
-            var housingBudget                               = new HousingBudget();
+            var housingBudget = new HousingBudget();
             housingBudget.AvailableMonthlyBudgetForMortgage = Decimal.Round(availableBudget, 2);
-            housingBudget.LoanTermInMonths                  = termInMonths;
-            housingBudget.LoanRate                          = rate;
-            housingBudget.EvaluatedListings                 = evaluatedListings.ToList();
+            housingBudget.LoanTermInMonths = termInMonths;
+            housingBudget.LoanRate = rate;
+            housingBudget.EvaluatedListings = evaluatedListings.ToList();
 
             return housingBudget;
         }
