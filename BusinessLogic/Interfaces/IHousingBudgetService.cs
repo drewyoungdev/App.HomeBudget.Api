@@ -5,6 +5,6 @@ namespace HouseBudgetApi.BusinessLogic.Interfaces
 {
     public interface IHousingBudgetService
     {
-        Task<HousingBudget> Run();
+        Task<HousingBudget> Run(string clientId);
     }
 }

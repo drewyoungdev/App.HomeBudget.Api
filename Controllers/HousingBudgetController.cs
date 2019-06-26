@@ -16,10 +16,12 @@ namespace HouseBudgetApi.Controllers
             this.housingBudgetService = housingBudgetService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<HousingBudget>> Get()
+        [HttpGet("{clientId}")]
+        public async Task<ActionResult<HousingBudget>> Get(string clientId)
         {
-            return await housingBudgetService.Run();
+            return await housingBudgetService.Run(clientId);
         }
+
+        // add various desired goals: Saving $100 per month, $0 Additional Income
     }
 }

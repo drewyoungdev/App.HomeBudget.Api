@@ -22,5 +22,6 @@ namespace HouseBudgetApi.Models.Database
         public decimal EstimatedMonthlyTaxes { get; set; }
         public decimal EstimatedMonthlyDeductions { get; set; }
         public decimal PercentageTo401K { get; set; }
+        public decimal AdditionalMonthlyIncome { get; set; }
     }
 }

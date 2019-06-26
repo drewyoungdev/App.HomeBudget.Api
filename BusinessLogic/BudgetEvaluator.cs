@@ -1,36 +1,27 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using HouseBudgetApi.BusinessLogic.Interfaces;
+using HouseBudgetApi.Models.Database;
+using HouseBudgetApi.Repositories.Interfaces;
 
 namespace HouseBudgetApi.BusinessLogic
 {
     public class BudgetEvaluator : IBudgetEvaluator
     {
-        // Pull from Budget Preferences DB
-        private decimal grossAnnualSalary          = 70155.12m;
-        private decimal estimatedMonthlyTaxes      = 1242.06m;
-        private decimal estimatedMonthlyDeductions = 186m;
-        private decimal percentageTo401K           = 15;
-        private decimal additionalMonthlyIncome    = 500m;
-        private Dictionary<string, decimal> variableCosts = new Dictionary<string, decimal>()
-        {
-            { "Vehicle Payment", 348 },
-            { "Vehicle Insurance", 154 },
-            { "Vehicle Fuel", 250 },
-            { "Internet and Cable", 193 },
-            { "Utilites", 200 },
-            { "Groceries", 400 },
-            { "Restaurants", 200 },
-            { "Shopping", 440 },
-            { "Amusement", 60 },
-            { "Gym Membership", 36.92m },
-            { "Haircut", 55 },
-        };
+        private IBudgetPreferencesRepository budgetPreferencesRepository;
 
-        public decimal CalculateAvailableMonthlyBudget()
+        public BudgetEvaluator(IBudgetPreferencesRepository budgetPreferencesRepository)
         {
-            var availableMonthlyBudget = CalculateEstimatedMonthlyIncome();
+            this.budgetPreferencesRepository = budgetPreferencesRepository;
+        }
 
-            foreach(var variableCost in variableCosts)
+        public async Task<decimal> CalculateAvailableMonthlyBudget(string clientId)
+        {
+            var budgetPreferences = await budgetPreferencesRepository.Get(clientId);
+
+            var availableMonthlyBudget = CalculateEstimatedMonthlyIncome(budgetPreferences.Income);
+
+            foreach(var variableCost in budgetPreferences.Costs)
             {
                 availableMonthlyBudget -= variableCost.Value;
             }
@@ -38,14 +29,17 @@ namespace HouseBudgetApi.BusinessLogic
             return availableMonthlyBudget;
         }
 
-        private decimal CalculateEstimatedMonthlyIncome()
+        private decimal CalculateEstimatedMonthlyIncome(Income income)
         {
-            var monthlyIncome = grossAnnualSalary / 12;
+            var monthlyIncome = income.GrossAnnualSalary / 12;
 
-            monthlyIncome -= estimatedMonthlyTaxes;
-            monthlyIncome -= estimatedMonthlyDeductions;
-            monthlyIncome -= (percentageTo401K / 100) * grossAnnualSalary / 12;
-            monthlyIncome += additionalMonthlyIncome;
+            monthlyIncome -= income.EstimatedMonthlyTaxes;
+            monthlyIncome -= income.EstimatedMonthlyDeductions;
+
+            var monthly401KDeposit = (income.PercentageTo401K / 100) * income.GrossAnnualSalary / 12;
+
+            monthlyIncome -= monthly401KDeposit;
+            monthlyIncome += income.AdditionalMonthlyIncome;
 
             return monthlyIncome;
         }

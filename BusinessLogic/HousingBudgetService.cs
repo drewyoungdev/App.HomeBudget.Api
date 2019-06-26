@@ -31,9 +31,9 @@ namespace HouseBudgetApi.BusinessLogic
             this.listingsEvaluator = listingsEvaluator;
         }
 
-        public async Task<HousingBudget> Run()
+        public async Task<HousingBudget> Run(string clientId)
         {
-            var availableBudget = budgetEvaluator.CalculateAvailableMonthlyBudget();
+            var availableBudget = await budgetEvaluator.CalculateAvailableMonthlyBudget(clientId);
 
             var evaluatedListingsTasks = listings
                 .Select(listing => Task.Run(() => listingsEvaluator.Evaluate(availableBudget, percentageForDownPayment, termInMonths, rate, listing)))

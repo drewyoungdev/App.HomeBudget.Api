@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
+
 namespace HouseBudgetApi.BusinessLogic.Interfaces
 {
     public interface IBudgetEvaluator
     {
-        decimal CalculateAvailableMonthlyBudget();
+        Task<decimal> CalculateAvailableMonthlyBudget(string clientId);
     }
 }
