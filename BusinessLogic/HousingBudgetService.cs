@@ -4,16 +4,12 @@ using HouseBudgetApi.BusinessLogic.Interfaces;
 using HouseBudgetApi.Models.Listings;
 using System.Linq;
 using System;
+using HouseBudgetApi.Repositories.Interfaces;
 
 namespace HouseBudgetApi.BusinessLogic
 {
     public class HousingBudgetService : IHousingBudgetService
     {
-        // Pull from Loan Settings DB
-        private int termInMonths = 360;
-        private decimal rate = 4.5m;
-        private decimal percentageForDownPayment = 20;
-
         // Pull from SavedListings DB
         private List<Listing> listings = new List<Listing>()
         {
@@ -23,17 +19,26 @@ namespace HouseBudgetApi.BusinessLogic
         };
 
         private IBudgetEvaluator budgetEvaluator;
+        private ILoanPreferencesRepository loanPreferencesRepository;
         private IListingsEvaluator listingsEvaluator;
 
-        public HousingBudgetService(IBudgetEvaluator budgetEvaluator, IListingsEvaluator listingsEvaluator)
+        public HousingBudgetService(IBudgetEvaluator budgetEvaluator,
+                                    ILoanPreferencesRepository loanPreferencesRepository,
+                                    IListingsEvaluator listingsEvaluator)
         {
-            this.budgetEvaluator = budgetEvaluator;
-            this.listingsEvaluator = listingsEvaluator;
+            this.budgetEvaluator           = budgetEvaluator;
+            this.loanPreferencesRepository = loanPreferencesRepository;
+            this.listingsEvaluator         = listingsEvaluator;
         }
 
         public async Task<HousingBudget> Run(string clientId)
         {
             var availableBudget = await budgetEvaluator.CalculateAvailableMonthlyBudget(clientId);
+            var loanPreferences = await loanPreferencesRepository.Get(clientId);
+
+            var percentageForDownPayment = loanPreferences.PercentageForDownPayment;
+            var termInMonths             = loanPreferences.TermInMonths;
+            var rate                     = loanPreferences.Rate;
 
             var evaluatedListingsTasks = listings
                 .Select(listing => Task.Run(() => listingsEvaluator.Evaluate(availableBudget, percentageForDownPayment, termInMonths, rate, listing)))

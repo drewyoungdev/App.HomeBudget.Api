@@ -17,5 +17,6 @@ namespace HouseBudgetApi.DatabaseContext
         }
 
         public IMongoCollection<BudgetPreferences> BudgetPreferences => _db.GetCollection<BudgetPreferences>("BudgetPreferences");
+        public IMongoCollection<LoanPreferences> LoanPreferences => _db.GetCollection<LoanPreferences>("LoanPreferences");
     }
 }

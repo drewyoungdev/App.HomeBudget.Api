@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using HouseBudgetApi.DatabaseContext.Interfaces;
 using HouseBudgetApi.Models.Database;
@@ -14,14 +13,6 @@ namespace HouseBudgetApi.Repositories
         public BudgetPreferencesRepository(IHouseBudgetContext context)
         {
             this.context = context;
-        }
-
-        public async Task<List<BudgetPreferences>> GetAll()
-        {
-            return await context
-                            .BudgetPreferences
-                            .Find(_ => true)
-                            .ToListAsync();
         }
 
         public Task<BudgetPreferences> Get(string clientId)

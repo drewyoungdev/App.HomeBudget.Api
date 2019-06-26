@@ -6,5 +6,6 @@ namespace HouseBudgetApi.DatabaseContext.Interfaces
     public interface IHouseBudgetContext
     {
         IMongoCollection<BudgetPreferences> BudgetPreferences { get; }
+        IMongoCollection<LoanPreferences> LoanPreferences { get; }
     }
 }

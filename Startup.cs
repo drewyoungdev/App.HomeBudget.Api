@@ -64,6 +64,7 @@ namespace HouseBudgetApi
             services.AddTransient<IBudgetEvaluator, BudgetEvaluator>();
 
             services.AddTransient<IBudgetPreferencesRepository, BudgetPreferencesRepository>();
+            services.AddTransient<ILoanPreferencesRepository, LoanPreferencesRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

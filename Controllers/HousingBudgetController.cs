@@ -23,5 +23,7 @@ namespace HouseBudgetApi.Controllers
         }
 
         // add various desired goals: Saving $100 per month, $0 Additional Income
+        // add ability to use sliders to adjust your budget preferences to see what other listings you might be eligible for in your area. (assuming certain things like percentage for down payment)
+        // we can include multiple loan products to increase the calculation for multiple options
     }
 }

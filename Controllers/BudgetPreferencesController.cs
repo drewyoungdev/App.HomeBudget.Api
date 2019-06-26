@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using HouseBudgetApi.Models.Database;
-using HouseBudgetApi.Models.Listings;
 using HouseBudgetApi.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
