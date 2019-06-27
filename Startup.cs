@@ -20,37 +20,6 @@ namespace HouseBudgetApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-            // https://www.qappdesign.com/using-mongodb-with-net-core-webapi/
-            // {
-            //     "income": {
-            //         "grossAnnualSalary": 70155.12,
-            //         "estimatedMonthlyTaxes": 1242.06,
-            //         "estimatedMonthlyDeductions": 186,
-            //         "percentageTo401K": 15
-            //     },
-            //     "variableCosts": {
-            //         {
-            //            "Vehicle Payment": 348,
-            //            "Vehicle Insurance": 154
-            //         }
-            //     }
-            //     "loanSettings": {
-            //         "termInMonths": 360,
-            //         "rate": 4.5,
-            //         "percentageForDownPayment": 20
-            //     },
-            //     "listings": [
-            //         {
-            //             "address": "131 S Dorchester Ave, Royal Oak, MI 48067",
-            //             "price": 259000
-            //         },
-            //         {
-            //             "address": "364 E Maplehurst St, Ferndale, MI 48220",
-            //             "price": 289890
-            //         }
-            //     ]
-            // }
         }
 
         public IConfiguration Configuration { get; }
@@ -65,6 +34,7 @@ namespace HouseBudgetApi
 
             services.AddTransient<IBudgetPreferencesRepository, BudgetPreferencesRepository>();
             services.AddTransient<ILoanPreferencesRepository, LoanPreferencesRepository>();
+            services.AddTransient<ISavedListingsRepository, SavedListingsRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

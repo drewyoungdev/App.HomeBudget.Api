@@ -7,5 +7,6 @@ namespace HouseBudgetApi.DatabaseContext.Interfaces
     {
         IMongoCollection<BudgetPreferences> BudgetPreferences { get; }
         IMongoCollection<LoanPreferences> LoanPreferences { get; }
+        IMongoCollection<SavedListings> SavedListings { get; }
     }
 }
